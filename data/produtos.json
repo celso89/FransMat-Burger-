@@ -1,1 +1,57 @@
+[
+  {
+    "id": "cachorro",
+    "name": "Cachorro",
+    "category": "cachorro",
+    "description": "Cachorro especial com 1 dose de batata incluída.",
+    "price": 3000,
+    "tag": "Com batata",
+    "image": "3000.PNG"
+  },
+  {
+    "id": "simples",
+    "name": "Hambúrguer Simples",
+    "category": "hamburguer",
+    "description": "Hambúrguer simples acompanhado de 1 dose de batata. Sumo opcional +500 Kz.",
+    "price": 4300,
+    "tag": "Favorito",
+    "image": "4300.JPG"
+  },
+  {
+    "id": "composto",
+    "name": "Hambúrguer Composto",
+    "category": "hamburguer",
+    "description": "Hambúrguer composto com 1 dose de batata e 1 sumo (Sumol ou Compal).",
+    "price": 5700,
+    "tag": "Completo",
+    "image": "5700.JPG"
+  },
+  {
+    "id": "casal-simples",
+    "name": "Combo Casal Simples",
+    "category": "combo",
+    "description": "2 hambúrgueres simples + 2 doses de batata. Opção de 2 sumos por mais 1.000 Kz.",
+    "price": 7800,
+    "tag": "Para dois",
+    "image": "7800kz.JPG"
+  },
+  {
+    "id": "casal-composto",
+    "name": "Combo Casal Composto",
+    "category": "combo",
+    "description": "2 hambúrgueres compostos + 2 doses de batata + 2 sumos (Sumol ou Compal).",
+    "price": 11500,
+    "tag": "Combo casal",
+    "image": "11500.JPG"
+  },
+  {
+    "id": "familia",
+    "name": "Combo Família",
+    "category": "combo",
+    "description": "5 hambúrgueres + 5 sumos + 5 doses de batata. Sumol ou Compal não incluídos.",
+    "price": 16500,
+    "tag": "Para partilhar",
+    "image": "16500.PNG"
+  }
+]
 
