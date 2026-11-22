@@ -4,7 +4,7 @@
     "name": "Cachorro",
     "category": "cachorro",
     "description": "Cachorro especial com 1 dose de batata incluída.",
-    "price": 3000,
+    "price": 300,
     "tag": "Com batata",
     "image": "3000.PNG"
   },
