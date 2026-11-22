@@ -126,7 +126,6 @@
     .delivery-list strong, .delivery-list small { display: block; }
     .delivery-list strong { font-size: 11px; }
     .delivery-list small { margin-top: 4px; color: var(--muted); font-size: 9px; }
-    .delivery-rule { padding: 14px; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; background: rgba(255,255,255,.65); }
     .how { background: rgba(255,255,255,.22); }
     .steps { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; }
     .step { min-height: 205px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.62); backdrop-filter: blur(16px); }
@@ -173,11 +172,6 @@
     .form-grid input::placeholder, .form-grid textarea::placeholder { color: #a89a8a; }
     .form-grid input:focus, .form-grid textarea:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(189,37,27,.1); }
     .form-grid textarea { resize: vertical; }
-    .delivery-info { display: flex; gap: 13px; margin: 22px 0; padding: 15px; border: 1px solid rgba(233,168,0,.28); border-radius: 15px; background: rgba(255,197,46,.18); }
-    .delivery-info-icon { font-size: 23px; }
-    .delivery-info b { color: #8a5c00; font-size: 12px; }
-    .delivery-info p { margin: 6px 0 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
-    .delivery-info strong { color: var(--ink); }
     .payment { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.55); }
     .payment > p { color: var(--muted); font-size: 10px; line-height: 1.6; }
     .owner { margin: 10px 0; color: var(--ink); font-size: 11px; font-weight: 850; }
@@ -268,7 +262,7 @@
 </head>
 
 <body>
-  <div class="topline">🍔 <b>FRANSMAT BURGER</b> · O sabor chega até ti! · Entregas em Luanda</div>
+  <div class="topline" id="site-delivery-message">🍔 <b>FRANSMAT BURGER</b> · O sabor chega até ti!</div>
 
   <header class="header">
     <a class="brand" href="#inicio" aria-label="FransMat Burger — início">
@@ -299,7 +293,7 @@
         </div>
       </div>
       <div class="hero-art">
-        <img src="logo.PNG" alt="FransMat Burger — hambúrguer e batatas fritas">
+        <img src="1.JPG" alt="FransMat Burger — hambúrguer composto">
         <div class="hero-badge">SABOR<br><strong>TOP</strong>DA CASA</div>
         <div class="hero-caption"><span>FRANSMAT</span> · O sabor chega até ti!</div>
       </div>
@@ -325,20 +319,14 @@
         <p>Escolhe o que te apetece. Adiciona ao carrinho e prepara a tua encomenda.</p>
       </div>
 
-      <div class="menu-tabs" role="group" aria-label="Filtrar produtos">
-        <button class="tab active" type="button" data-filter="todos">Todos</button>
-        <button class="tab" type="button" data-filter="hamburguer">Hambúrgueres</button>
-        <button class="tab" type="button" data-filter="combo">Combos</button>
-        <button class="tab" type="button" data-filter="cachorro">Cachorros</button>
-      </div>
+      <div class="menu-tabs" id="menu-tabs" aria-label="Categorias de produtos"></div>
 
       <div class="product-grid" id="product-grid"></div>
-      <p class="product-note">* No Hambúrguer Simples, a opção de sumo (Sumol ou Compal) tem acréscimo de 500 Kz. No Combo Casal Simples, a opção de 2 sumos tem acréscimo de 1.000 Kz. Bebidas sujeitas à disponibilidade.</p>
     </section>
 
     <section class="section promo" id="entrega">
       <div class="promo-photo">
-        <img src="16500.PNG" alt="Combo Família FransMat">
+        <img src="3.JPG" alt="Combo Família FransMat">
         <span class="promo-stamp">PARA PARTILHAR EM FAMÍLIA ✦</span>
       </div>
       <div>
@@ -350,7 +338,6 @@
           <div><b>02</b><span><strong>Envia a localização</strong><small>Indica município, bairro e ponto de referência.</small></span></div>
           <div><b>03</b><span><strong>Recebe a confirmação</strong><small>A equipa confirma o valor final e a entrega.</small></span></div>
         </div>
-        <p class="delivery-rule"><b>Taxa de entrega:</b> 1.500 Kz para 1 pedido. Em 2 ou mais pedidos, entrega grátis, conforme indicado nos materiais promocionais. Confirma a cobertura e o prazo da tua zona pelo WhatsApp.</p>
       </div>
     </section>
 
@@ -386,8 +373,8 @@
           </div>
           <div class="totals">
             <div><span>Subtotal dos produtos</span><b id="subtotal">0 Kz</b></div>
-            <div><span>Taxa de entrega</span><b>A confirmar</b></div>
-            <div class="grand"><span>Total estimado</span><b id="total">0 Kz + entrega</b></div>
+            <div><span>Entrega</span><b id="delivery-total">Grátis</b></div>
+            <div class="grand"><span>Total</span><b id="total">0 Kz</b></div>
           </div>
           <a class="continue-shopping" href="#menu">＋ Adicionar mais produtos</a>
         </section>
@@ -416,19 +403,14 @@
               <label class="full">Instruções para a entrega <small>(opcional)</small><textarea name="notes" rows="2" placeholder="Alguma indicação para o estafeta?"></textarea></label>
             </div>
 
-            <div class="delivery-info">
-              <div class="delivery-info-icon">🛵</div>
-              <div><b>Como funciona a entrega</b><p>1 pedido: <strong>1.500 Kz</strong>. Em 2 ou mais pedidos: <strong>entrega grátis</strong>, conforme as condições da promoção. A equipa confirma a cobertura e o valor final pelo WhatsApp.</p></div>
-            </div>
-
             <div class="payment">
               <div class="form-title">Pagamento</div>
               <p>Confirma os dados com a equipa antes de efectuar a transferência.</p>
-              <div class="owner">Titular: Hélio Pedro</div>
-              <div class="bank"><span>BFA</span><b id="bfa">000600005364702530114</b><button type="button" class="copy" data-copy="bfa">Copiar</button></div>
-              <div class="bank"><span>BAI</span><b id="bai">004000005111011410193</b><button type="button" class="copy" data-copy="bai">Copiar</button></div>
-              <div class="bank"><span>Atlântico</span><b id="atlantico">005500006095825410158</b><button type="button" class="copy" data-copy="atlantico">Copiar</button></div>
-              <div class="bank"><span>Express</span><b id="express">945942660</b><button type="button" class="copy" data-copy="express">Copiar</button></div>
+              <div class="owner" id="payment-owner"></div>
+              <div class="bank"><span>BFA</span><b id="bfa"></b><button type="button" class="copy" data-copy="bfa">Copiar</button></div>
+              <div class="bank"><span>BAI</span><b id="bai"></b><button type="button" class="copy" data-copy="bai">Copiar</button></div>
+              <div class="bank"><span>Atlântico</span><b id="atlantico"></b><button type="button" class="copy" data-copy="atlantico">Copiar</button></div>
+              <div class="bank"><span>Express</span><b id="express"></b><button type="button" class="copy" data-copy="express">Copiar</button></div>
             </div>
 
             <label class="terms"><input type="checkbox" required> Confirmo que os meus dados e a morada estão correctos.</label>
@@ -457,7 +439,7 @@
 
   <footer>
     <a class="brand" href="#inicio">
-      <img src="logo.PNG" alt="">
+      <img src="4.JPG" alt="">
       <span><strong>FRANSMAT BURGER</strong><small>O SABOR CHEGA ATÉ TI!</small></span>
     </a>
     <span>© <span id="year"></span> FransMat. Todos os direitos reservados.</span>
@@ -473,88 +455,112 @@
     "use strict";
 
     const FRANSMAT = {
-      whatsapp: "244951643511",
+      whatsapp: "",
       products: [],
-      bankAccounts: {
-        bfa: "000600005364702530114",
-        bai: "004000005111011410193",
-        atlantico: "005500006095825410158",
-        express: "945942660"
-      },
-      deliveryFee: 1500,
-      deliveryFreeFromOrders: 2,
-      owner: "Hélio Pedro"
+      bankAccounts: {},
+      owner: "",
+      deliveryMessage: "Entrega gratuita em qualquer pedido."
     };
 
+    const money = value => `${Number(value || 0).toLocaleString("pt-PT")} Kz`;
+    const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[char]));
+    const getProduct = id => FRANSMAT.products.find(product => product.id === id);
+    const cart = new Map();
+    const cartCount = () => [...cart.values()].reduce((total, quantity) => total + quantity, 0);
+    const cartSubtotal = () => [...cart.entries()].reduce((total, [id, quantity]) => {
+      const product = getProduct(id);
+      return total + (product ? Number(product.price) * quantity : 0);
+    }, 0);
+
     async function loadSiteData() {
+      const grid = document.getElementById("product-grid");
       try {
         const [productsResponse, configResponse] = await Promise.all([
           fetch("./data/produtos.json", { cache: "no-store" }),
           fetch("./data/config-site.json", { cache: "no-store" })
         ]);
         if (!productsResponse.ok || !configResponse.ok) {
-          throw new Error("Não foi possível carregar os dados do site.");
+          throw new Error("Não foi possível carregar os ficheiros da pasta data.");
         }
 
-        const products = await productsResponse.json();
-        const config = await configResponse.json();
+        const [products, config] = await Promise.all([
+          productsResponse.json(), configResponse.json()
+        ]);
+        if (!Array.isArray(products) || !products.length) {
+          throw new Error("O ficheiro produtos.json não contém produtos.");
+        }
+        if (!config || typeof config !== "object") {
+          throw new Error("O ficheiro config-site.json é inválido.");
+        }
 
-        if (!Array.isArray(products)) throw new Error("Formato de produtos inválido.");
-        FRANSMAT.products = products;
-        FRANSMAT.whatsapp = String(config.whatsapp || FRANSMAT.whatsapp).replace(/\D/g, "");
-        FRANSMAT.bankAccounts = { ...FRANSMAT.bankAccounts, ...(config.bankAccounts || {}) };
-        FRANSMAT.deliveryFee = Number(config.delivery_fee ?? FRANSMAT.deliveryFee);
-        FRANSMAT.deliveryFreeFromOrders = Number(config.delivery_free_from_orders ?? 2);
-        FRANSMAT.owner = config.owner || FRANSMAT.owner;
+        FRANSMAT.products = products.filter(product =>
+          product && product.id && product.name && Number.isFinite(Number(product.price))
+        );
+        FRANSMAT.whatsapp = String(config.whatsapp || "").replace(/\D/g, "");
+        FRANSMAT.bankAccounts = config.bankAccounts || {};
+        FRANSMAT.owner = String(config.owner || "");
+        FRANSMAT.deliveryMessage = String(config.delivery_message || "Entrega gratuita em qualquer pedido.");
+        document.getElementById("site-delivery-message").insertAdjacentText("beforeend", " · " + FRANSMAT.deliveryMessage);
 
         for (const id of ["bfa", "bai", "atlantico", "express"]) {
           const element = document.getElementById(id);
-          if (element) element.textContent = FRANSMAT.bankAccounts[id] || "";
+          if (element) element.textContent = FRANSMAT.bankAccounts[id] || "A confirmar";
         }
-        const owner = document.querySelector(".owner");
-        if (owner) owner.textContent = "Titular: " + FRANSMAT.owner;
-        const delivery = document.querySelector(".delivery-info p");
-        if (delivery) delivery.innerHTML =
-          `1 pedido: <strong>${money(FRANSMAT.deliveryFee)}</strong>. Em ${FRANSMAT.deliveryFreeFromOrders} ou mais pedidos: <strong>entrega grátis</strong>, conforme as condições da promoção. A equipa confirma a cobertura e o valor final pelo WhatsApp.`;
+        document.getElementById("payment-owner").textContent =
+          FRANSMAT.owner ? "Titular: " + FRANSMAT.owner : "";
+
+        renderCategoryTabs();
+        renderProducts();
+        renderCart();
+
         document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
           link.href = `https://wa.me/${FRANSMAT.whatsapp}`;
         });
-
-        renderProducts();
-        renderCart();
       } catch (error) {
         console.error(error);
-        const grid = document.getElementById("product-grid");
-        if (grid) grid.innerHTML = '<p>Não foi possível carregar o menu. Tenta actualizar a página.</p>';
+        if (grid) grid.innerHTML = '<p>Não foi possível carregar o menu. Confirma os ficheiros dentro da pasta <b>data</b>.</p>';
+        document.getElementById("menu-tabs").innerHTML = "";
       }
     }
 
-    const cart = new Map();
-    const money = value => `${Number(value || 0).toLocaleString("pt-PT")} Kz`;
-    const getProduct = id => FRANSMAT.products.find(product => product.id === id);
-    const cartCount = () => [...cart.values()].reduce((total, quantity) => total + quantity, 0);
-    const cartSubtotal = () => [...cart.entries()].reduce((total, [id, quantity]) => {
-      const product = getProduct(id);
-      return total + (product ? product.price * quantity : 0);
-    }, 0);
+    function renderCategoryTabs() {
+      const container = document.getElementById("menu-tabs");
+      const categories = [...new Set(FRANSMAT.products.map(product => product.category).filter(Boolean))];
+      const labels = { hamburguer: "Hambúrgueres", combo: "Combos", cachorro: "Cachorros" };
+      container.innerHTML = [
+        '<button class="tab active" type="button" data-filter="todos">Todos</button>',
+        ...categories.map(category =>
+          `<button class="tab" type="button" data-filter="${escapeHTML(category)}">${escapeHTML(labels[category] || category)}</button>`
+        )
+      ].join("");
+
+      container.querySelectorAll(".tab").forEach(button => {
+        button.addEventListener("click", () => {
+          container.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+          button.classList.add("active");
+          renderProducts(button.dataset.filter);
+        });
+      });
+    }
 
     function renderProducts(filter = "todos") {
-      const products = FRANSMAT.products.filter(product => {
-        return filter === "todos" || product.category === filter;
-      });
-
+      const products = FRANSMAT.products.filter(product =>
+        filter === "todos" || product.category === filter
+      );
       document.getElementById("product-grid").innerHTML = products.map(product => `
         <article class="product">
           <div class="product-photo">
-            <img loading="lazy" src="${product.image}" alt="${product.name}">
-            <span class="product-tag">${product.tag}</span>
+            <img loading="lazy" src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}">
+            ${product.tag ? `<span class="product-tag">${escapeHTML(product.tag)}</span>` : ""}
           </div>
           <div class="product-info">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
+            <h3>${escapeHTML(product.name)}</h3>
+            <p>${escapeHTML(product.description || "")}</p>
             <div class="product-foot">
-              <b class="price">${money(product.price)}<small>Preço do cartaz</small></b>
-              <button class="add" type="button" data-add="${product.id}" aria-label="Adicionar ${product.name}">+</button>
+              <b class="price">${money(product.price)}<small>Preço</small></b>
+              <button class="add" type="button" data-add="${escapeHTML(product.id)}" aria-label="Adicionar ${escapeHTML(product.name)}">+</button>
             </div>
           </div>
         </article>
@@ -589,7 +595,7 @@
 
       document.getElementById("cart-count").textContent = `${quantity} ${quantity === 1 ? "item" : "itens"}`;
       document.getElementById("subtotal").textContent = money(subtotal);
-      document.getElementById("total").textContent = `${money(subtotal)} + entrega`;
+      document.getElementById("total").textContent = money(subtotal);
       document.getElementById("mobile-count").textContent = quantity;
       document.getElementById("mobile-total").textContent = money(subtotal);
       document.getElementById("mobile-cart").classList.toggle("visible", quantity > 0);
@@ -637,6 +643,7 @@
       button.addEventListener("click", async () => {
         const accountId = button.dataset.copy;
         const value = FRANSMAT.bankAccounts[accountId];
+        if (!value) { alert("Esta conta ainda não está configurada em data/config-site.json."); return; }
 
         try {
           if (navigator.clipboard && window.isSecureContext) {
@@ -700,6 +707,7 @@
       }
 
       if (whatsappSubmit.hidden) return;
+      if (!FRANSMAT.whatsapp) { alert("O número de WhatsApp não está configurado em data/config-site.json."); return; }
 
       if (cart.size === 0) {
         alert("Adiciona pelo menos um produto ao carrinho.");
@@ -721,8 +729,8 @@
         ...productLines,
         "",
         `*Subtotal:* ${money(subtotal)}`,
-        `*Entrega:* A confirmar (1 pedido: ${money(FRANSMAT.deliveryFee)}; ${FRANSMAT.deliveryFreeFromOrders} ou mais pedidos: grátis, conforme condições)`,
-        `*Total:* ${money(subtotal)} + entrega a confirmar`,
+        `*Entrega:* Grátis`,
+        `*Total:* ${money(subtotal)}`,
         "",
         "*DADOS DO CLIENTE*",
         `Nome: ${formData.get("name")}`,
@@ -752,4 +760,3 @@
   </script>
 </body>
 </html>
-
