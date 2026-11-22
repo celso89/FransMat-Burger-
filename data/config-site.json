@@ -1,7 +1,6 @@
 {
   "whatsapp": "244951643511",
-  "delivery_fee": 1500,
-  "delivery_free_from_orders": 2,
+  "delivery_message": "Entrega gratuita em qualquer pedido.",
   "owner": "Hélio Pedro",
   "bankAccounts": {
     "bfa": "000600005364702530114",
