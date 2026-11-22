@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#17100c">
   <meta name="description" content="FransMat Burger — hambúrgueres, cachorros e combos preparados para chegar até ti em Luanda.">
   <title>FransMat Burger | O sabor chega até ti!</title>
+  <link rel="icon" type="image/png" href="logo.PNG">
 
   <style>
     :root {
@@ -40,8 +41,17 @@
     button { cursor: pointer; }
     img { display: block; max-width: 100%; }
     .topline {
-      padding: 9px 5%; background: var(--dark); color: #fff5df;
-      text-align: center; letter-spacing: .1em; text-transform: uppercase; font-size: 9px;
+      min-height: 38px; padding: 8px 5%; background: var(--dark); color: #fff5df;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      letter-spacing: .1em; text-transform: uppercase; font-size: 9px;
+    }
+    .topline-brand { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .free-delivery {
+      flex: 0 0 auto; display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 12px; border: 1px solid rgba(255,197,46,.35); border-radius: 999px;
+      background: linear-gradient(135deg,rgba(255,197,46,.18),rgba(243,107,25,.12));
+      color: #ffe19a; font-size: 9px; font-weight: 950; letter-spacing: .04em;
+      text-transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
     }
     .header {
       position: sticky; top: 0; z-index: 20; display: flex; align-items: center;
@@ -51,7 +61,7 @@
       border-bottom: 1px solid var(--line); box-shadow: 0 8px 35px rgba(74,34,15,.08);
     }
     .brand { display: inline-flex; align-items: center; gap: 11px; min-width: max-content; }
-    .brand img { width: 43px; height: 43px; object-fit: contain; border-radius: 12px; }
+    .brand img { width: 52px; height: 52px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 16px rgba(74,34,15,.14); }
     .brand span { display: grid; gap: 3px; }
     .brand strong { color: var(--ink); font-size: 12px; letter-spacing: .08em; }
     .brand small { color: var(--muted); font-size: 8px; letter-spacing: .13em; }
@@ -212,10 +222,13 @@
       .steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
     }
     @media (max-width: 620px) {
+      .topline { padding: 8px 4%; gap: 8px; }
+      .topline-brand { font-size: 8px; letter-spacing: .04em; }
+      .free-delivery { padding: 7px 9px; font-size: 8px; }
       .header { padding: 11px 5%; }
       .nav { display: none; }
       .head-cta { padding: 11px 12px; font-size: 9px; }
-      .brand img { width: 36px; height: 36px; }
+      .brand img { width: 42px; height: 42px; }
       .brand strong { font-size: 10px; }
       .hero { min-height: 0; grid-template-columns: 1fr; padding: 48px 6% 55px; }
       .hero h1 { font-size: 57px; }
@@ -262,7 +275,10 @@
 </head>
 
 <body>
-  <div class="topline" id="site-delivery-message">🍔 <b>FRANSMAT BURGER</b> · O sabor chega até ti!</div>
+  <div class="topline">
+    <span class="topline-brand">🍔 <b>FRANSMAT BURGER</b> · O sabor chega até ti!</span>
+    <span class="free-delivery">Entregas Totalmente Grátis ✅</span>
+  </div>
 
   <header class="header">
     <a class="brand" href="#inicio" aria-label="FransMat Burger — início">
@@ -439,7 +455,7 @@
 
   <footer>
     <a class="brand" href="#inicio">
-      <img src="4.JPG" alt="">
+      <img src="logo.PNG" alt="Logótipo FransMat Burger">
       <span><strong>FRANSMAT BURGER</strong><small>O SABOR CHEGA ATÉ TI!</small></span>
     </a>
     <span>© <span id="year"></span> FransMat. Todos os direitos reservados.</span>
@@ -502,7 +518,6 @@
         FRANSMAT.bankAccounts = config.bankAccounts || {};
         FRANSMAT.owner = String(config.owner || "");
         FRANSMAT.deliveryMessage = String(config.delivery_message || "Entrega gratuita em qualquer pedido.");
-        document.getElementById("site-delivery-message").insertAdjacentText("beforeend", " · " + FRANSMAT.deliveryMessage);
 
         for (const id of ["bfa", "bai", "atlantico", "express"]) {
           const element = document.getElementById(id);
