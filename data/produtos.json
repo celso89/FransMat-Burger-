@@ -1,57 +1,47 @@
 [
   {
-    "id": "cachorro",
-    "name": "Cachorro",
-    "category": "cachorro",
-    "description": "Cachorro especial com 1 dose de batata incluída.",
-    "price": 3000,
-    "tag": "Com batata",
-    "image": "3000.PNG"
-  },
-  {
-    "id": "simples",
+    "id": "hamburguer-simples",
     "name": "Hambúrguer Simples",
     "category": "hamburguer",
-    "description": "Hambúrguer simples acompanhado de 1 dose de batata. Sumo opcional +500 Kz.",
+    "description": "Hambúrguer simples acompanhado de 1 dose de batata e água incluída.",
     "price": 4300,
-    "tag": "Favorito",
-    "image": "4300.JPG"
+    "tag": "Clássico",
+    "image": "4.JPG"
   },
   {
-    "id": "composto",
+    "id": "hamburguer-composto",
     "name": "Hambúrguer Composto",
     "category": "hamburguer",
-    "description": "Hambúrguer composto com 1 dose de batata e 1 sumo (Sumol ou Compal).",
-    "price": 5700,
-    "tag": "Completo",
-    "image": "5700.JPG"
+    "description": "Hambúrguer composto acompanhado de 1 dose de batata e 1 sumo incluído (Sumol ou Compal).",
+    "price": 6300,
+    "tag": "Mais completo",
+    "image": "1.JPG"
   },
   {
-    "id": "casal-simples",
-    "name": "Combo Casal Simples",
+    "id": "combo-simples",
+    "name": "Combo Simples",
     "category": "combo",
-    "description": "2 hambúrgueres simples + 2 doses de batata. Opção de 2 sumos por mais 1.000 Kz.",
-    "price": 7800,
-    "tag": "Para dois",
-    "image": "7800kz.JPG"
+    "description": "2 hambúrgueres simples, 2 doses de batata e água incluída.",
+    "price": 8200,
+    "tag": "Para partilhar",
+    "image": "2.JPG"
   },
   {
-    "id": "casal-composto",
+    "id": "combo-casal-composto",
     "name": "Combo Casal Composto",
     "category": "combo",
-    "description": "2 hambúrgueres compostos + 2 doses de batata + 2 sumos (Sumol ou Compal).",
-    "price": 11500,
+    "description": "2 hambúrgueres compostos, 2 doses de batata e 2 sumos incluídos (Sumol ou Compal).",
+    "price": 10700,
     "tag": "Combo casal",
-    "image": "11500.JPG"
+    "image": "5.JPG"
   },
   {
-    "id": "familia",
+    "id": "combo-familia",
     "name": "Combo Família",
     "category": "combo",
-    "description": "5 hambúrgueres + 5 sumos + 5 doses de batata. Sumol ou Compal não incluídos.",
-    "price": 16500,
-    "tag": "Para partilhar",
-    "image": "16500.PNG"
+    "description": "5 hambúrgueres compostos, 5 doses de batata e 5 sumos incluídos (Sumol ou Compal).",
+    "price": 21500,
+    "tag": "Para a família",
+    "image": "3.JPG"
   }
 ]
-
