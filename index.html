@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="pt-AO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17100c">
+  <meta name="description" content="FransMat Burger — hambúrgueres, cachorros e combos preparados para chegar até ti em Luanda.">
+  <title>FransMat Burger | O sabor chega até ti!</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fff9ef;
+      --paper: rgba(255,255,255,.72);
+      --ink: #20140d;
+      --muted: #796b5d;
+      --red: #bd251b;
+      --orange: #f36b19;
+      --gold: #e9a800;
+      --line: rgba(32,20,13,.12);
+      --dark: #17100c;
+      --shadow: 0 22px 70px rgba(74,34,15,.14);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 78% 2%, rgba(243,107,25,.14), transparent 34%),
+        radial-gradient(ellipse at 5% 45%, rgba(255,197,46,.22), transparent 28%),
+        var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; max-width: 100%; }
+    .topline {
+      padding: 9px 5%; background: var(--dark); color: #fff5df;
+      text-align: center; letter-spacing: .1em; text-transform: uppercase; font-size: 9px;
+    }
+    .header {
+      position: sticky; top: 0; z-index: 20; display: flex; align-items: center;
+      justify-content: space-between; gap: 22px; padding: 13px 5%;
+      background: rgba(255,253,248,.78); backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border-bottom: 1px solid var(--line); box-shadow: 0 8px 35px rgba(74,34,15,.08);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: max-content; }
+    .brand img { width: 43px; height: 43px; object-fit: contain; border-radius: 12px; }
+    .brand span { display: grid; gap: 3px; }
+    .brand strong { color: var(--ink); font-size: 12px; letter-spacing: .08em; }
+    .brand small { color: var(--muted); font-size: 8px; letter-spacing: .13em; }
+    .nav { display: flex; gap: 25px; color: #5e4c3c; font-size: 12px; font-weight: 700; }
+    .nav a:hover { color: var(--red); }
+    .head-cta, .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+      border: 0; border-radius: 12px; padding: 13px 18px; color: white;
+      background: linear-gradient(135deg,#e8321f,#bd211d);
+      box-shadow: 0 9px 28px rgba(189,37,27,.22); font-size: 11px; font-weight: 900;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .head-cta:hover, .btn:hover, .add:hover { transform: translateY(-2px); }
+    .hero {
+      max-width: 1200px; min-height: 590px; margin: auto; padding: 70px 5%;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px;
+    }
+    .kicker { display: flex; align-items: center; gap: 9px; color: var(--red); font-size: 9px; font-weight: 950; letter-spacing: .17em; text-transform: uppercase; }
+    .kicker::before { content: ""; width: 20px; height: 2px; background: #ffc52e; }
+    .hero h1 { margin: 18px 0; color: var(--ink); font-size: clamp(54px,7vw,88px); line-height: .88; letter-spacing: -.075em; }
+    .hero h1 em, .section h2 em { color: var(--red); font-style: normal; }
+    .hero-copy > p { max-width: 470px; color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 25px; }
+    .btn.secondary { background: rgba(255,255,255,.65); color: var(--ink); border: 1px solid var(--line); box-shadow: none; backdrop-filter: blur(14px); }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 30px; color: var(--muted); font-size: 10px; }
+    .hero-note b { display: block; margin-bottom: 4px; color: var(--ink); }
+    .stamp { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: rgba(255,197,46,.28); border: 1px solid rgba(233,168,0,.3); font-size: 18px; }
+    .hero-art { position: relative; max-width: 510px; justify-self: end; }
+    .hero-art > img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 7px solid rgba(255,255,255,.85); border-radius: 32px; box-shadow: 0 30px 80px rgba(80,32,13,.22); }
+    .hero-badge { position: absolute; top: 8%; right: -18px; display: grid; place-content: center; width: 90px; height: 90px; border-radius: 50%; background: var(--gold); color: var(--dark); text-align: center; font-size: 9px; font-weight: 900; transform: rotate(9deg); }
+    .hero-badge strong { font-size: 22px; }
+    .hero-caption { position: absolute; left: 22px; bottom: 22px; padding: 12px 16px; border-radius: 12px; background: rgba(23,16,12,.88); color: white; border: 1px solid rgba(255,255,255,.25); backdrop-filter: blur(16px); font-size: 10px; }
+    .hero-caption span { font-weight: 950; letter-spacing: .1em; }
+    .marquee { overflow: hidden; white-space: nowrap; padding: 16px 0; background: linear-gradient(100deg,#8e1d19,#d93629 48%,#8e1d19); border-block: 1px solid #ffffff1a; }
+    .marquee-track { display: flex; align-items: center; gap: 30px; width: max-content; animation: ticker 34s linear infinite; }
+    .marquee span { color: white; font-size: 10px; font-weight: 950; letter-spacing: .17em; }
+    .marquee i { color: #ffc52e; font-size: 18px; font-style: normal; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    .section { padding: 85px 5%; }
+    .section-head { max-width: 1200px; margin: 0 auto 35px; display: flex; justify-content: space-between; align-items: end; gap: 25px; }
+    .section h2 { margin: 13px 0 0; color: var(--ink); font-size: clamp(38px,4.7vw,60px); line-height: .98; letter-spacing: -.055em; }
+    .section-head > p { max-width: 360px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .menu-tabs { max-width: 1200px; margin: 0 auto 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tab { padding: 10px 15px; border: 1px solid var(--line); border-radius: 30px; background: rgba(255,255,255,.55); color: var(--muted); font-size: 10px; font-weight: 850; }
+    .tab.active, .tab:hover { background: var(--ink); border-color: var(--ink); color: white; }
+    .product-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .product { overflow: hidden; background: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.75); border-radius: var(--radius); box-shadow: 0 12px 35px rgba(56,27,12,.08); backdrop-filter: blur(18px); transition: .25s ease; }
+    .product:hover { transform: translateY(-4px); border-color: rgba(233,168,0,.45); box-shadow: 0 20px 50px rgba(74,34,15,.14); }
+    .product-photo { position: relative; height: 210px; background: #f6df9c; }
+    .product-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .product-tag { position: absolute; top: 12px; left: 12px; padding: 7px 10px; border-radius: 20px; background: rgba(255,255,255,.9); color: var(--ink); font-size: 9px; font-weight: 900; }
+    .product-info { padding: 18px; }
+    .product-info h3 { margin: 0 0 8px; color: var(--ink); font-size: 16px; }
+    .product-info p { min-height: 42px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .product-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; }
+    .price { color: var(--red); font-size: 16px; }
+    .price small { display: block; margin-top: 4px; color: var(--muted); font-size: 8px; font-weight: 500; }
+    .add { width: 39px; height: 39px; border: 0; border-radius: 12px; color: white; background: linear-gradient(135deg,#e8321f,#b91f19); font-size: 22px; box-shadow: 0 7px 18px rgba(228,60,48,.18); }
+    .product-note { max-width: 1200px; margin: 18px auto 0; color: var(--muted); font-size: 10px; line-height: 1.8; }
+
+    .promo { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 55px; background: linear-gradient(135deg,#fff3d9,#fff9ef); border-block: 1px solid var(--line); }
+    .promo-photo { position: relative; max-width: 520px; }
+    .promo-photo img { width: 100%; border: 1px solid rgba(255,255,255,.8); border-radius: 26px; box-shadow: var(--shadow); }
+    .promo-stamp { position: absolute; bottom: 17px; left: 17px; padding: 11px 14px; border-radius: 10px; background: rgba(23,16,12,.88); color: white; font-size: 9px; font-weight: 900; letter-spacing: .1em; }
+    .promo h2 { margin: 14px 0; color: var(--ink); font-size: clamp(40px,5vw,62px); line-height: .98; letter-spacing: -.06em; }
+    .promo h2 em { color: var(--red); font-style: normal; }
+    .promo p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .delivery-list { margin: 22px 0; }
+    .delivery-list > div { display: flex; align-items: center; gap: 15px; padding: 14px 0; border-bottom: 1px solid rgba(32,20,13,.1); }
+    .delivery-list > div > b { color: var(--red); font-size: 12px; }
+    .delivery-list strong, .delivery-list small { display: block; }
+    .delivery-list strong { font-size: 11px; }
+    .delivery-list small { margin-top: 4px; color: var(--muted); font-size: 9px; }
+    .delivery-rule { padding: 14px; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; background: rgba(255,255,255,.65); }
+    .how { background: rgba(255,255,255,.22); }
+    .steps { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; }
+    .step { min-height: 205px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.62); backdrop-filter: blur(16px); }
+    .step-num { color: #c6b6a5; font-size: 11px; font-weight: 950; }
+    .step-icon { margin: 18px 0 12px; font-size: 25px; }
+    .step h3 { margin: 0 0 7px; color: var(--ink); font-size: 13px; }
+    .step p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+
+    .order { display: block; background: transparent; }
+    .order-heading { max-width: 1200px; margin: 0 auto 34px; }
+    .order-heading h2 { margin: 13px 0 12px; font-size: clamp(38px,4.7vw,60px); line-height: .98; letter-spacing: -.055em; }
+    .order-heading > p { max-width: 550px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .order-layout { max-width: 1200px; margin: auto; display: grid; grid-template-columns: .88fr 1.12fr; gap: 20px; align-items: start; }
+    .checkout { padding: 25px; border: 1px solid rgba(255,255,255,.85); border-radius: 24px; background: linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,253,248,.55)); box-shadow: 0 20px 60px rgba(74,34,15,.12); backdrop-filter: blur(24px); }
+    .checkout-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+    .checkout-head h3 { margin: 5px 0 0; color: var(--ink); font-size: 21px; }
+    .checkout-head > span { padding: 7px 11px; border: 1px solid var(--line); border-radius: 30px; background: rgba(255,255,255,.65); color: var(--muted); font-size: 10px; }
+    .step-label { color: #b97e00; font-size: 9px; font-weight: 950; letter-spacing: .17em; }
+    .card-subtitle { margin: 14px 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .cart-items { min-height: 115px; padding: 7px 0 12px; }
+    .empty { padding: 25px 8px; border: 1px dashed rgba(32,20,13,.18); border-radius: 15px; color: var(--muted); text-align: center; font-size: 11px; line-height: 1.8; }
+    .empty b { color: var(--ink); }
+    .cart-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 9px; padding: 15px 0; border-bottom: 1px solid rgba(32,20,13,.08); }
+    .cart-row b { color: var(--ink); font-size: 12px; }
+    .cart-row small { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; }
+    .cart-row > strong { grid-column: 1/-1; color: var(--red); text-align: right; font-size: 12px; }
+    .qty { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: 9px; }
+    .qty button { width: 29px; height: 29px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.85); color: var(--ink); }
+    .qty b { min-width: 12px; text-align: center; }
+    .totals { padding: 15px 0; border-top: 1px solid var(--line); }
+    .totals > div { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: 11px; }
+    .totals span { color: var(--muted); }
+    .totals b { color: var(--ink); text-align: right; }
+    .grand { margin-top: 8px; padding-top: 15px !important; border-top: 1px solid var(--line); font-size: 14px !important; }
+    .grand b { color: var(--red); font-size: 17px; }
+    .continue-shopping { display: flex; justify-content: center; padding: 13px; border: 1px solid rgba(32,20,13,.15); border-radius: 12px; background: rgba(255,255,255,.55); color: #8a5c00; font-size: 11px; font-weight: 850; }
+    .form-title { margin: 19px 0 12px; color: var(--ink); font-size: 13px; font-weight: 850; }
+    .address-title { margin-top: 24px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; }
+    .form-grid label { display: grid; gap: 7px; color: #594a3c; font-size: 10px; font-weight: 750; }
+    .form-grid label.full { grid-column: 1/-1; }
+    .form-grid label small { color: var(--muted); font-weight: 400; }
+    .form-grid input, .form-grid textarea { width: 100%; min-width: 0; padding: 13px; border: 1px solid rgba(32,20,13,.14); border-radius: 11px; outline: none; background: rgba(255,255,255,.75); color: var(--ink); font-size: 11px; }
+    .form-grid input::placeholder, .form-grid textarea::placeholder { color: #a89a8a; }
+    .form-grid input:focus, .form-grid textarea:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(189,37,27,.1); }
+    .form-grid textarea { resize: vertical; }
+    .delivery-info { display: flex; gap: 13px; margin: 22px 0; padding: 15px; border: 1px solid rgba(233,168,0,.28); border-radius: 15px; background: rgba(255,197,46,.18); }
+    .delivery-info-icon { font-size: 23px; }
+    .delivery-info b { color: #8a5c00; font-size: 12px; }
+    .delivery-info p { margin: 6px 0 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .delivery-info strong { color: var(--ink); }
+    .payment { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.55); }
+    .payment > p { color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .owner { margin: 10px 0; color: var(--ink); font-size: 11px; font-weight: 850; }
+    .bank { display: grid; grid-template-columns: 75px minmax(0,1fr) auto; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid rgba(32,20,13,.1); }
+    .bank span { color: var(--muted); font-size: 10px; }
+    .bank b { overflow-wrap: anywhere; color: var(--ink); font-size: 10px; }
+    .copy { padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.9); color: var(--ink); font-size: 9px; }
+    .terms { display: flex; align-items: flex-start; gap: 9px; margin: 18px 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .terms input { margin-top: 1px; accent-color: var(--red); }
+    .submit { width: 100%; border-radius: 12px; padding: 16px; }
+    .hint { color: var(--muted); font-size: 9px; line-height: 1.7; text-align: center; }
+    .bottom-cta { padding: 75px 5%; border-top: 1px solid var(--line); background: linear-gradient(180deg,#fffdf8,#fff9ef); text-align: center; }
+    .bottom-cta .kicker { justify-content: center; }
+    .bottom-cta h2 { margin: 15px 0; color: var(--ink); font-size: clamp(35px,5vw,55px); letter-spacing: -.06em; }
+    .bottom-cta h2 em { color: var(--red); font-style: normal; }
+    .bottom-cta p { max-width: 520px; margin: 0 auto 22px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 25px 5%; background: var(--dark); color: #fff5df; font-size: 9px; }
+    footer .brand strong { color: white; }
+    footer .brand small { color: #c5b7a8; }
+    footer > a:last-child { color: #ffc52e; }
+    .mobile-cart { display: none; position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 5%; border-top: 1px solid var(--line); background: rgba(255,253,248,.94); backdrop-filter: blur(22px); box-shadow: 0 -10px 35px rgba(74,34,15,.12); color: var(--ink); font-size: 11px; }
+    .mobile-cart.visible { display: flex; }
+    .mobile-cart a { padding: 11px 14px; border-radius: 10px; background: var(--red); color: white; font-weight: 850; }
+
+    @media (max-width: 900px) {
+      .hero { gap: 28px; }
+      .order-layout { grid-template-columns: 1fr; }
+      .promo { gap: 30px; }
+      .steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width: 620px) {
+      .header { padding: 11px 5%; }
+      .nav { display: none; }
+      .head-cta { padding: 11px 12px; font-size: 9px; }
+      .brand img { width: 36px; height: 36px; }
+      .brand strong { font-size: 10px; }
+      .hero { min-height: 0; grid-template-columns: 1fr; padding: 48px 6% 55px; }
+      .hero h1 { font-size: 57px; }
+      .hero-art { width: 92%; justify-self: center; }
+      .hero-art > img { border-radius: 22px; }
+      .hero-badge { right: -12px; width: 75px; height: 75px; }
+      .section { padding: 60px 5%; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .section h2 { font-size: 46px; }
+      .product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 11px; }
+      .product { border-radius: 17px; }
+      .product-photo { height: 145px; }
+      .product-info { padding: 13px; }
+      .product-info h3 { font-size: 13px; }
+      .product-info p { min-height: 60px; font-size: 9px; }
+      .price { font-size: 13px; }
+      .add { width: 34px; height: 34px; }
+      .promo { grid-template-columns: 1fr; padding-top: 60px; padding-bottom: 60px; }
+      .steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .step { min-height: 190px; padding: 15px; }
+      .checkout { padding: 18px; border-radius: 19px; }
+      .order-heading h2 { font-size: 43px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid label.full { grid-column: auto; }
+      .bank { grid-template-columns: 52px minmax(0,1fr) auto; }
+      .bank b { font-size: 9px; }
+      .marquee-track { gap: 22px; animation-duration: 28s; }
+      .marquee span { font-size: 9px; }
+      footer { flex-wrap: wrap; }
+      footer > span { order: 3; width: 100%; }
+      body { padding-bottom: 62px; }
+    }
+    @media (max-width: 370px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .product-photo { height: 190px; }
+      .hero h1 { font-size: 49px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .marquee-track { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topline">🍔 <b>FRANSMAT BURGER</b> · O sabor chega até ti! · Entregas em Luanda</div>
+
+  <header class="header">
+    <a class="brand" href="#inicio" aria-label="FransMat Burger — início">
+      <img src="logo.PNG" alt="Logótipo FransMat Burger">
+      <span><strong>FRANSMAT BURGER</strong><small>O SABOR CHEGA ATÉ TI!</small></span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#menu">Menu</a>
+      <a href="#entrega">Entregas</a>
+      <a href="#como">Como funciona</a>
+    </nav>
+    <a class="head-cta" href="#encomendar">Encomendar agora</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <div class="kicker">Hambúrgueres & muito mais</div>
+        <h1>A FOME<br>CHAMA.<br><em>FRANSMAT</em><br>RESOLVE.</h1>
+        <p>Hambúrgueres, cachorros e combos preparados para matar a tua fome. Escolhe o teu favorito, faz a encomenda e recebe onde estiveres.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#menu">Ver o nosso menu ↓</a>
+          <a class="btn secondary" href="https://wa.me/244951643511" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+        <div class="hero-note">
+          <span class="stamp">🔥</span>
+          <span><b>Mais sabor. Menos complicações.</b>Preparamos a tua encomenda com atenção.</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="logo.PNG" alt="FransMat Burger — hambúrguer e batatas fritas">
+        <div class="hero-badge">SABOR<br><strong>TOP</strong>DA CASA</div>
+        <div class="hero-caption"><span>FRANSMAT</span> · O sabor chega até ti!</div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Feito para matar a fome. Hambúrgueres e muito mais.">
+      <div class="marquee-track">
+        <span>FEITO PARA MATAR A FOME</span>🍔<i></i>
+        <span>HAMBÚRGUERES NO PONTO</span><i>🍔</i>
+        <span>COMBOS PARA PARTILHAR</span><i>🍔</i>
+        <span>CACHORROS ESPECIAIS</span><i>🍔</i>
+        <span>MAIS SABOR A CADA PEDIDO</span><i>🍔</i>
+        <span>FEITO PARA MATAR A FOME</span><i>🍔</i>
+        <span>HAMBÚRGUERES NO PONTO</span><i>🍔</i>
+        <span>COMBOS PARA PARTILHAR</span><i>🍔</i>
+        <span>CACHORROS ESPECIAIS</span><i>🍔</i>
+      </div>
+    </div>
+
+    <section class="section" id="menu">
+      <div class="section-head">
+        <div><div class="kicker">Escolhe o teu favorito</div><h2>O menu que<br><em>te chama.</em></h2></div>
+        <p>Escolhe o que te apetece. Adiciona ao carrinho e prepara a tua encomenda.</p>
+      </div>
+
+      <div class="menu-tabs" role="group" aria-label="Filtrar produtos">
+        <button class="tab active" type="button" data-filter="todos">Todos</button>
+        <button class="tab" type="button" data-filter="hamburguer">Hambúrgueres</button>
+        <button class="tab" type="button" data-filter="combo">Combos</button>
+        <button class="tab" type="button" data-filter="cachorro">Cachorros</button>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+      <p class="product-note">* No Hambúrguer Simples, a opção de sumo (Sumol ou Compal) tem acréscimo de 500 Kz. No Combo Casal Simples, a opção de 2 sumos tem acréscimo de 1.000 Kz. Bebidas sujeitas à disponibilidade.</p>
+    </section>
+
+    <section class="section promo" id="entrega">
+      <div class="promo-photo">
+        <img src="16500.PNG" alt="Combo Família FransMat">
+        <span class="promo-stamp">PARA PARTILHAR EM FAMÍLIA ✦</span>
+      </div>
+      <div>
+        <div class="kicker">A nossa forma de chegar até ti</div>
+        <h2>O teu pedido.<br><em>À tua porta.</em></h2>
+        <p>Faz a tua escolha, indica a tua morada e a nossa equipa confirma contigo os detalhes da entrega pelo WhatsApp.</p>
+        <div class="delivery-list">
+          <div><b>01</b><span><strong>Escolhe o teu combo</strong><small>Vê as opções e os preços no menu.</small></span></div>
+          <div><b>02</b><span><strong>Envia a localização</strong><small>Indica município, bairro e ponto de referência.</small></span></div>
+          <div><b>03</b><span><strong>Recebe a confirmação</strong><small>A equipa confirma o valor final e a entrega.</small></span></div>
+        </div>
+        <p class="delivery-rule"><b>Taxa de entrega:</b> 1.500 Kz para 1 pedido. Em 2 ou mais pedidos, entrega grátis, conforme indicado nos materiais promocionais. Confirma a cobertura e o prazo da tua zona pelo WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="section how" id="como">
+      <div class="section-head">
+        <div><div class="kicker">Simples e directo</div><h2>Da tua escolha<br><em>à tua mesa.</em></h2></div>
+        <p>Encomendar é fácil: só precisas de escolher, preencher os dados e confirmar pelo WhatsApp.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><span class="step-num">01</span><div class="step-icon">🍔</div><h3>Escolhe o menu</h3><p>Adiciona os teus hambúrgueres, cachorros ou combos.</p></article>
+        <article class="step"><span class="step-num">02</span><div class="step-icon">📍</div><h3>Indica a morada</h3><p>Preenche os teus contactos e os detalhes da entrega.</p></article>
+        <article class="step"><span class="step-num">03</span><div class="step-icon">💳</div><h3>Confirma o pagamento</h3><p>Consulta os dados bancários e envia o comprovativo à equipa.</p></article>
+        <article class="step"><span class="step-num">04</span><div class="step-icon">🛵</div><h3>Recebe o pedido</h3><p>Partilha a localização em tempo real e aguarda a confirmação.</p></article>
+      </div>
+    </section>
+
+    <section class="section order" id="encomendar">
+      <div class="order-heading">
+        <div class="kicker">A tua encomenda</div>
+        <h2>Escolhe. Confirma.<br><em>Recebe.</em></h2>
+        <p>Organizámos o pedido em etapas simples. Primeiro revê o carrinho, depois indica onde queres receber.</p>
+      </div>
+
+      <div class="order-layout">
+        <section class="checkout cart-card" aria-labelledby="cart-title">
+          <div class="checkout-head">
+            <div><span class="step-label">ETAPA 01</span><h3 id="cart-title">O teu carrinho</h3></div>
+            <span id="cart-count">0 itens</span>
+          </div>
+          <p class="card-subtitle">Confirma os produtos e ajusta as quantidades antes de continuar.</p>
+          <div id="cart-items" class="cart-items">
+            <div class="empty">🛒<br><b>O carrinho está vazio</b><br>Escolhe os teus favoritos no menu.</div>
+          </div>
+          <div class="totals">
+            <div><span>Subtotal dos produtos</span><b id="subtotal">0 Kz</b></div>
+            <div><span>Taxa de entrega</span><b>A confirmar</b></div>
+            <div class="grand"><span>Total estimado</span><b id="total">0 Kz + entrega</b></div>
+          </div>
+          <a class="continue-shopping" href="#menu">＋ Adicionar mais produtos</a>
+        </section>
+
+        <section class="checkout delivery-card" aria-labelledby="delivery-title">
+          <div class="checkout-head">
+            <div><span class="step-label">ETAPA 02</span><h3 id="delivery-title">Onde vamos entregar?</h3></div>
+            <span>📍 Entrega</span>
+          </div>
+          <p class="card-subtitle">Preenche os teus dados para a equipa localizar facilmente o destino.</p>
+
+          <form id="order-form">
+            <div class="form-title">Os teus contactos</div>
+            <div class="form-grid">
+              <label>Nome completo<input name="name" required autocomplete="name" placeholder="Como te chamas?"></label>
+              <label>Telefone / WhatsApp<input name="phone" type="tel" required autocomplete="tel" placeholder="+244 9xx xxx xxx"></label>
+              <label class="full">E-mail <small>(opcional)</small><input name="email" type="email" autocomplete="email" placeholder="teuemail@exemplo.com"></label>
+            </div>
+
+            <div class="form-title address-title">Morada de entrega</div>
+            <div class="form-grid">
+              <label>Município / zona<input name="municipality" required placeholder="Ex.: Maianga"></label>
+              <label>Bairro<input name="neighborhood" required placeholder="O teu bairro"></label>
+              <label class="full">Rua e número da casa<input name="street" required placeholder="Rua, número, edifício..."></label>
+              <label class="full">Ponto de referência <small>(opcional)</small><input name="reference" placeholder="Ex.: perto de uma escola, loja..."></label>
+              <label class="full">Instruções para a entrega <small>(opcional)</small><textarea name="notes" rows="2" placeholder="Alguma indicação para o estafeta?"></textarea></label>
+            </div>
+
+            <div class="delivery-info">
+              <div class="delivery-info-icon">🛵</div>
+              <div><b>Como funciona a entrega</b><p>1 pedido: <strong>1.500 Kz</strong>. Em 2 ou mais pedidos: <strong>entrega grátis</strong>, conforme as condições da promoção. A equipa confirma a cobertura e o valor final pelo WhatsApp.</p></div>
+            </div>
+
+            <div class="payment">
+              <div class="form-title">Pagamento</div>
+              <p>Confirma os dados com a equipa antes de efectuar a transferência.</p>
+              <div class="owner">Titular: Hélio Pedro</div>
+              <div class="bank"><span>BFA</span><b id="bfa">000600005364702530114</b><button type="button" class="copy" data-copy="bfa">Copiar</button></div>
+              <div class="bank"><span>BAI</span><b id="bai">004000005111011410193</b><button type="button" class="copy" data-copy="bai">Copiar</button></div>
+              <div class="bank"><span>Atlântico</span><b id="atlantico">005500006095825410158</b><button type="button" class="copy" data-copy="atlantico">Copiar</button></div>
+              <div class="bank"><span>Express</span><b id="express">945942660</b><button type="button" class="copy" data-copy="express">Copiar</button></div>
+            </div>
+
+            <label class="terms"><input type="checkbox" required> Confirmo que os meus dados e a morada estão correctos.</label>
+            <button class="btn submit" type="submit">Confirmar encomenda pelo WhatsApp</button>
+            <p class="hint">A equipa confirma a disponibilidade, a entrega e o pagamento directamente contigo.</p>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="bottom-cta">
+      <div class="kicker">Estamos à tua espera</div>
+      <h2>Hoje é dia de <em>FransMat.</em></h2>
+      <p>Escolhe o teu favorito e fala connosco para confirmar a disponibilidade e a entrega na tua zona.</p>
+      <a class="btn" href="https://wa.me/244951643511" target="_blank" rel="noopener">Fazer pedido no WhatsApp</a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#inicio">
+      <img src="logo.PNG" alt="">
+      <span><strong>FRANSMAT BURGER</strong><small>O SABOR CHEGA ATÉ TI!</small></span>
+    </a>
+    <span>© <span id="year"></span> FransMat. Todos os direitos reservados.</span>
+    <a href="#inicio">Voltar ao topo ↑</a>
+  </footer>
+
+  <div class="mobile-cart" id="mobile-cart">
+    <span><b id="mobile-count">0</b> itens · <strong id="mobile-total">0 Kz</strong></span>
+    <a href="#encomendar">Ver encomenda ↓</a>
+  </div>
+
+  <script>
+    "use strict";
+
+    const FRANSMAT = {
+      whatsapp: "244951643511",
+      products: [],
+      bankAccounts: {
+        bfa: "000600005364702530114",
+        bai: "004000005111011410193",
+        atlantico: "005500006095825410158",
+        express: "945942660"
+      },
+      deliveryFee: 1500,
+      deliveryFreeFromOrders: 2,
+      owner: "Hélio Pedro"
+    };
+
+    async function loadSiteData() {
+      try {
+        const [productsResponse, configResponse] = await Promise.all([
+          fetch("./data/produtos.json", { cache: "no-store" }),
+          fetch("./data/config-site.json", { cache: "no-store" })
+        ]);
+        if (!productsResponse.ok || !configResponse.ok) {
+          throw new Error("Não foi possível carregar os dados do site.");
+        }
+
+        const products = await productsResponse.json();
+        const config = await configResponse.json();
+
+        if (!Array.isArray(products)) throw new Error("Formato de produtos inválido.");
+        FRANSMAT.products = products;
+        FRANSMAT.whatsapp = String(config.whatsapp || FRANSMAT.whatsapp).replace(/\D/g, "");
+        FRANSMAT.bankAccounts = { ...FRANSMAT.bankAccounts, ...(config.bankAccounts || {}) };
+        FRANSMAT.deliveryFee = Number(config.delivery_fee ?? FRANSMAT.deliveryFee);
+        FRANSMAT.deliveryFreeFromOrders = Number(config.delivery_free_from_orders ?? 2);
+        FRANSMAT.owner = config.owner || FRANSMAT.owner;
+
+        for (const id of ["bfa", "bai", "atlantico", "express"]) {
+          const element = document.getElementById(id);
+          if (element) element.textContent = FRANSMAT.bankAccounts[id] || "";
+        }
+        const owner = document.querySelector(".owner");
+        if (owner) owner.textContent = "Titular: " + FRANSMAT.owner;
+        const delivery = document.querySelector(".delivery-info p");
+        if (delivery) delivery.innerHTML =
+          `1 pedido: <strong>${money(FRANSMAT.deliveryFee)}</strong>. Em ${FRANSMAT.deliveryFreeFromOrders} ou mais pedidos: <strong>entrega grátis</strong>, conforme as condições da promoção. A equipa confirma a cobertura e o valor final pelo WhatsApp.`;
+        document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+          link.href = `https://wa.me/${FRANSMAT.whatsapp}`;
+        });
+
+        renderProducts();
+        renderCart();
+      } catch (error) {
+        console.error(error);
+        const grid = document.getElementById("product-grid");
+        if (grid) grid.innerHTML = '<p>Não foi possível carregar o menu. Tenta actualizar a página.</p>';
+      }
+    }
+
+    const cart = new Map();
+    const money = value => `${Number(value || 0).toLocaleString("pt-PT")} Kz`;
+    const getProduct = id => FRANSMAT.products.find(product => product.id === id);
+    const cartCount = () => [...cart.values()].reduce((total, quantity) => total + quantity, 0);
+    const cartSubtotal = () => [...cart.entries()].reduce((total, [id, quantity]) => {
+      const product = getProduct(id);
+      return total + (product ? product.price * quantity : 0);
+    }, 0);
+
+    function renderProducts(filter = "todos") {
+      const products = FRANSMAT.products.filter(product => {
+        return filter === "todos" || product.category === filter;
+      });
+
+      document.getElementById("product-grid").innerHTML = products.map(product => `
+        <article class="product">
+          <div class="product-photo">
+            <img loading="lazy" src="${product.image}" alt="${product.name}">
+            <span class="product-tag">${product.tag}</span>
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="product-foot">
+              <b class="price">${money(product.price)}<small>Preço do cartaz</small></b>
+              <button class="add" type="button" data-add="${product.id}" aria-label="Adicionar ${product.name}">+</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderCart() {
+      const cartElement = document.getElementById("cart-items");
+      const entries = [...cart.entries()];
+
+      if (entries.length) {
+        cartElement.innerHTML = entries.map(([id, quantity]) => {
+          const product = getProduct(id);
+          return `
+            <div class="cart-row">
+              <div><b>${product.name}</b><small>${money(product.price)} / unidade</small></div>
+              <div class="qty">
+                <button type="button" data-qty="${id}" data-delta="-1" aria-label="Diminuir quantidade de ${product.name}">−</button>
+                <b>${quantity}</b>
+                <button type="button" data-qty="${id}" data-delta="1" aria-label="Aumentar quantidade de ${product.name}">+</button>
+              </div>
+              <strong>${money(product.price * quantity)}</strong>
+            </div>
+          `;
+        }).join("");
+      } else {
+        cartElement.innerHTML = '<div class="empty">🛒<br><b>O carrinho está vazio</b><br>Escolhe algo delicioso no menu.</div>';
+      }
+
+      const quantity = cartCount();
+      const subtotal = cartSubtotal();
+
+      document.getElementById("cart-count").textContent = `${quantity} ${quantity === 1 ? "item" : "itens"}`;
+      document.getElementById("subtotal").textContent = money(subtotal);
+      document.getElementById("total").textContent = `${money(subtotal)} + entrega`;
+      document.getElementById("mobile-count").textContent = quantity;
+      document.getElementById("mobile-total").textContent = money(subtotal);
+      document.getElementById("mobile-cart").classList.toggle("visible", quantity > 0);
+    }
+
+    document.getElementById("product-grid").addEventListener("click", event => {
+      const button = event.target.closest("[data-add]");
+      if (!button) return;
+
+      const productId = button.dataset.add;
+      cart.set(productId, (cart.get(productId) || 0) + 1);
+      renderCart();
+
+      button.textContent = "✓";
+      button.style.background = "#21834a";
+      window.setTimeout(() => {
+        button.textContent = "+";
+        button.style.background = "";
+      }, 650);
+    });
+
+    document.getElementById("cart-items").addEventListener("click", event => {
+      const button = event.target.closest("[data-qty]");
+      if (!button) return;
+
+      const productId = button.dataset.qty;
+      const newQuantity = (cart.get(productId) || 0) + Number(button.dataset.delta);
+
+      if (newQuantity <= 0) cart.delete(productId);
+      else cart.set(productId, newQuantity);
+
+      renderCart();
+    });
+
+    document.querySelectorAll(".tab").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+        button.classList.add("active");
+        renderProducts(button.dataset.filter);
+      });
+    });
+
+    document.querySelectorAll(".copy").forEach(button => {
+      button.addEventListener("click", async () => {
+        const accountId = button.dataset.copy;
+        const value = FRANSMAT.bankAccounts[accountId];
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(value);
+          } else {
+            const temporaryInput = document.createElement("textarea");
+            temporaryInput.value = value;
+            temporaryInput.style.position = "fixed";
+            temporaryInput.style.opacity = "0";
+            document.body.appendChild(temporaryInput);
+            temporaryInput.select();
+            document.execCommand("copy");
+            temporaryInput.remove();
+          }
+
+          button.textContent = "Copiado";
+          window.setTimeout(() => { button.textContent = "Copiar"; }, 1200);
+        } catch {
+          alert("Não foi possível copiar. Selecciona o número manualmente.");
+        }
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("order-form").addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (cart.size === 0) {
+        alert("Adiciona pelo menos um produto ao carrinho.");
+        document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      const formData = new FormData(event.currentTarget);
+      const productLines = [...cart.entries()].map(([id, quantity]) => {
+        const product = getProduct(id);
+        return `• ${product.name} x${quantity} — ${money(product.price * quantity)}`;
+      });
+
+      const subtotal = cartSubtotal();
+      const message = [
+        "*NOVA ENCOMENDA — FRANSMAT*",
+        "",
+        "*PRODUTOS*",
+        ...productLines,
+        "",
+        `*Subtotal:* ${money(subtotal)}`,
+        `*Entrega:* A confirmar (1 pedido: ${money(FRANSMAT.deliveryFee)}; ${FRANSMAT.deliveryFreeFromOrders} ou mais pedidos: grátis, conforme condições)`,
+        `*Total:* ${money(subtotal)} + entrega a confirmar`,
+        "",
+        "*DADOS DO CLIENTE*",
+        `Nome: ${formData.get("name")}`,
+        `Telefone: ${formData.get("phone")}`,
+        `E-mail: ${formData.get("email") || "Não indicado"}`,
+        `Município/zona: ${formData.get("municipality")}`,
+        `Bairro: ${formData.get("neighborhood")}`,
+        `Morada: ${formData.get("street")}`,
+        `Referência: ${formData.get("reference") || "Não indicada"}`,
+        `Instruções: ${formData.get("notes") || "Nenhuma"}`,
+        "",
+        "*PAGAMENTO*",
+        `Titular: ${FRANSMAT.owner}`,
+        `BFA: ${FRANSMAT.bankAccounts.bfa}`,
+        `BAI: ${FRANSMAT.bankAccounts.bai}`,
+        `Atlântico: ${FRANSMAT.bankAccounts.atlantico}`,
+        `Express: ${FRANSMAT.bankAccounts.express}`,
+        "",
+        "Vou enviar o comprovativo e partilhar a minha localização em tempo real."
+      ].join("\n");
+
+      const whatsappUrl = `https://wa.me/${FRANSMAT.whatsapp}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    });
+
+    loadSiteData();
+  </script>
+</body>
+</html>
